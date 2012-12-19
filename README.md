@@ -1,11 +1,11 @@
-Sinatra-Modular-Template
+Link Saver
 =========
 
-This is a Sinatra template to serve as an organized template for a modular Sinatra application.
+This is a Sinatra template to serve as a cross platform link saver between mobile and desktop.
 
 Copyright
 ---
 Copyright (c) 2012 Brandon Hilkert.
 See [LICENSE][] for details.
 
-[license]: https://github.com/brandonhilkert/sinatra-modular-template/blob/master/LICENSE
+[license]: https://github.com/brandonhilkert/links/blob/master/LICENSE
