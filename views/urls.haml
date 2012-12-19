@@ -8,7 +8,8 @@
     - @urls.each do |url|
       %li.url
         %a{href: url, target: :_blank}= url
-        .actions.pull-right
+        %br.clear
+        .actions
           %form{action: "/#{@list}/urls", method: "post"}
             %input{name: "_method", type: "hidden", value: "delete"}
             %input{name: "url", type: "hidden", value: url}

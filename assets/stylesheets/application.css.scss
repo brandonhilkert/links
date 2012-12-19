@@ -2,6 +2,10 @@ body {
   font-size: 1.2em;
 }
 
+.clear {
+  clear: both;
+}
+
 .navbar-inner {
   padding-top: 20px;
 }
@@ -35,9 +39,13 @@ body {
     border-bottom: 1px solid #ddd;
     padding: 4%;
     -webkit-tap-highlight-color: white;
+    position: relative;
 
     .actions {
       display: none;
+      position: absolute;
+      top: 10px;
+      right: 2%;
     }
 
     form {
