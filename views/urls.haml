@@ -1,6 +1,6 @@
 .new-url
   %form{action: "/#{@list}/urls", method: "post"}
-    %input{name: "url", type: "url", placeholder: "URL", size: "30"}
+    %input{name: "url", type: "text", placeholder: "URL", size: "30"}
     %input.btn.btn-primary{name: "commit", type: "submit", value: "Add"}
 
 - if @urls.any?

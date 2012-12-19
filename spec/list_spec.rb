@@ -29,6 +29,11 @@ describe Project::List do
     list.urls.should have(2).urls
   end
 
+  it "adds protocol if link doesn't have it" do
+    list.add_url("apple.com")
+    list.urls.should include "http://apple.com"
+  end
+
   it "can delete an url" do
     Project.redis.sadd(list.key, "http://google.com")
     Project.redis.sadd(list.key, "http://apple.com")

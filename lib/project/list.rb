@@ -11,6 +11,7 @@ module Project
     end
 
     def add_url(name)
+      name = "http://#{name}" unless name.include?("://")
       Project.redis.sadd(key, name)
     end
 
