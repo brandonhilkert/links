@@ -7,12 +7,9 @@
   %ul.urls
     - @urls.each do |url|
       %li.url
+        %form{action: "/#{@list}/urls", method: "post"}
+          %input{name: "_method", type: "hidden", value: "delete"}
+          %input{name: "url", type: "hidden", value: url}
+          %input.btn.btn-danger.btn-small{type: "submit", value: "Delete"}
         %a{href: url, target: :_blank}= url
         %br.clear
-        .actions
-          %form{action: "/#{@list}/urls", method: "post"}
-            %input{name: "_method", type: "hidden", value: "delete"}
-            %input{name: "url", type: "hidden", value: url}
-            %input.btn.btn-danger.btn-small{type: "submit", value: "Delete"}
-
-          %button.btn.btn-small Cancel

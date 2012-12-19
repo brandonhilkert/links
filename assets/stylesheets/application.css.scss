@@ -41,22 +41,19 @@ body {
     -webkit-tap-highlight-color: white;
     position: relative;
 
-    .actions {
-      display: none;
-      position: absolute;
-      top: 10px;
-      right: 2%;
-    }
-
     form {
       float: left;
       margin-right: 20px;
+      margin-bottom: 0;
+      width: 50px;
     }
   }
 
   a {
+    display: block;
     float: left;
-    margin-right: 4%;
+    width: 70%;
+    font-size: 0.8em;
   }
 
   p {
