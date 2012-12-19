@@ -1,0 +1,58 @@
+body {
+  font-size: 1.2em;
+}
+
+.navbar-inner {
+  padding-top: 20px;
+}
+
+.new-url form {
+  margin-bottom: 3%;
+  margin-left: 3%;
+
+  input[type=text] {
+    padding: 3%;
+    width: 65%;
+    font-size: inherit;
+  }
+
+  input[type=submit] {
+    margin-top: -10px;
+    height: 38px;
+  }
+}
+
+.urls {
+  margin-left: 0;
+
+  li:first-child {
+    border-top: 1px solid #ddd;
+
+  }
+
+  .url {
+    list-style-type: none;
+    border-bottom: 1px solid #ddd;
+    padding: 4%;
+    -webkit-tap-highlight-color: white;
+
+    .actions {
+      display: none;
+    }
+
+    form {
+      float: left;
+      margin-right: 20px;
+    }
+  }
+
+  a {
+    float: left;
+    margin-right: 4%;
+  }
+
+  p {
+    width: 70%;
+    float: left;
+  }
+}

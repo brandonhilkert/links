@@ -1,0 +1,33 @@
+!!! 5
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}
+    %meta{:"http-equiv" => "X-UA-Compatible", content: "IE=Edge,chrome=1"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0, user-scalable=no"}
+    %meta{name: "apple-mobile-web-app-capable", content: "yes"}
+    %meta{name: "apple-mobile-web-app-status-bar-style", content: "black-translucent"}
+    %title Links
+    %meta{name: "description", content: "A link saver application to access from multiple devices."}
+    %link{href: "//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap.no-responsive.no-icons.min.css", rel: "stylesheet"}
+    %link{href: "//netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css", rel: "stylesheet"}
+    %link{href: "#{asset_path('application.css')}", rel: "stylesheet", type: "text/css"}
+
+    %link{href: "/apple-touch-icon-144x144.png", rel: "apple-touch-icon", sizes: "144x144", type: "image/png"}
+    %link{href: "/apple-touch-icon-72x72.png", rel: "apple-touch-icon", sizes: "72x72", type: "image/png"}
+    %link{href: "/apple-touch-icon.png", rel: "apple-touch-icon", type: "image/png"}
+    %link{href: "/favicon.png", rel: "shortcut icon", type: "image/png"}
+
+  %body
+    .navbar.navbar-top
+      .navbar-inner
+        .container
+          %a.brand{href: "/"}
+            %i.icon-link
+            Brando's Links
+
+    = yield
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+    %script{src: "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"}
+    %script{src: "//cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js"}
+    %script{src: "#{asset_path('application.js')}"}
