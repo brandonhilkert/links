@@ -18,5 +18,5 @@ tmp/
 bin/
 
 config/database.yml
-config/application.yml
+config/local_settings.yml
 .sass-cache/
