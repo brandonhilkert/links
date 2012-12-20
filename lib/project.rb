@@ -10,6 +10,16 @@ module Project
     @env ||= (ENV["RACK_ENV"] || "development")
   end
 
+  def self.config
+    config_file = Pathname.new File.join(root, "config", "application.yml")
+
+    if config_file.file?
+      YAML.load(ERB.new(config_file.read).result)[env]
+    else
+      ENV
+    end
+  end
+
   def self.redis
     @redis ||= (
       url = URI(ENV['REDISTOGO_URL'] || "redis://127.0.0.1:6379")

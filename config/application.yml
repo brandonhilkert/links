@@ -1,0 +1,12 @@
+defaults: &defaults
+  GA_TRACKING_ID: UA-37196838-1
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
