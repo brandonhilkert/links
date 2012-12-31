@@ -1,7 +1,7 @@
 .new-url
   %form{action: "/#{@list}/urls", method: "post"}
     %input{name: "url", type: "text", placeholder: "URL", size: "30"}
-    %input.btn.btn-primary{name: "commit", type: "submit", value: "Add"}
+    %input.btn.btn-info{name: "commit", type: "submit", value: "Add"}
 
 - if @urls.any?
   %ul.urls
@@ -10,6 +10,6 @@
         %form{action: "/#{@list}/urls", method: "post"}
           %input{name: "_method", type: "hidden", value: "delete"}
           %input{name: "url", type: "hidden", value: url}
-          %input.btn.btn-danger.btn-small{type: "submit", value: "Delete"}
+          %input.btn.btn-danger.btn-small{type: "submit", value: "X"}
         %a{href: url, target: :_blank}= url
         %br.clear

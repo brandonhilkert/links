@@ -1,13 +1,20 @@
+$border-color: #5B5B78;
+$border-style: 1px solid $border-color;
+
 body {
   font-size: 1.2em;
+  margin-top: 10px;
+  background-color: black;
+  color: white;
 }
 
 .clear {
   clear: both;
 }
 
-.navbar-inner {
-  padding-top: 20px;
+.index {
+  width: 70%;
+  margin: 50px auto;
 }
 
 .new-url form {
@@ -15,9 +22,21 @@ body {
   margin-left: 3%;
 
   input[type=text] {
-    padding: 3%;
+    padding: 2%;
     width: 65%;
     font-size: inherit;
+    background-color: transparent;
+    border: none;
+    border-bottom: $border-style;
+    outline-style: none;
+    color: inherit;
+    border-radius: 0;
+
+    &:focus {
+      border-color: #2f96b4;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
   }
 
   input[type=submit] {
@@ -30,30 +49,29 @@ body {
   margin-left: 0;
 
   li:first-child {
-    border-top: 1px solid #ddd;
-
+    border-top: $border-style;
   }
 
   .url {
     list-style-type: none;
-    border-bottom: 1px solid #ddd;
+    border-bottom: $border-style;
     padding: 4%;
-    -webkit-tap-highlight-color: white;
     position: relative;
 
     form {
       float: left;
       margin-right: 20px;
       margin-bottom: 0;
-      width: 50px;
+      width: 25px;
     }
   }
 
   a {
     display: block;
     float: left;
-    width: 70%;
+    width: 80%;
     font-size: 0.8em;
+    color: white;
   }
 
   p {
