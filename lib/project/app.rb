@@ -19,13 +19,13 @@ module Project
     end
 
     get '/' do
-      haml :index
+      erb :index
     end
 
     get '/:id' do
       @list = Project::List.new(params[:id])
       @urls = @list.urls
-      haml :urls
+      erb :urls
     end
 
     post '/:id/urls' do

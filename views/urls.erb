@@ -1,0 +1,22 @@
+<div class="new-url">
+  <form action="<%= "/#{@list}/urls" %>" method="post" accept-charset="utf-8">
+    <input type="text" name="url" placeholder="URL" />
+    <input type="submit" name="commit" value="Add" class="btn btn-info" />
+  </form>
+</div>
+
+<% if @urls.any? %>
+  <ul class="urls">
+    <% @urls.each do |url| %>
+      <li class="url">
+        <form action="<%= "/#{@list}/urls" %>" method="post" accept-charset="utf-8">
+          <input type="hidden" name="_method" value="delete" />
+          <input type="hidden" name="url" value="<%= url %>" />
+          <input type="submit" name="delete" value="X" class="btn btn-danger btn-small" />
+        </form>
+        <a href="<%= url %>" title="<%= url %>" target="_blank"><%= url %></a>
+        <br class="clear"></br>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
