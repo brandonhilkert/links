@@ -1,6 +1,7 @@
 class @Links
   constructor: (list) ->
     @path = list + "/urls"
+    @linkTemplate = Handlebars.compile $("#link-template").html()
 
   load: ->
     $.getJSON @path, (data) =>
@@ -8,11 +9,7 @@ class @Links
         @renderLink url
 
   renderLink: (url) ->
-    source   = $("#link-template").html()
-    template = Handlebars.compile(source)
-    context = { url: url }
-    html = template context
-    $(".urls").append html
+    $(".urls").append @linkTemplate({ url: url })
 
   add: (url) ->
     $.ajax
