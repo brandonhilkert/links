@@ -66,6 +66,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-script
   debugger
+  multi_json
   rake
   redis-namespace
   rspec

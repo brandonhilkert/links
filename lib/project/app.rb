@@ -28,6 +28,13 @@ module Project
       erb :urls
     end
 
+    get '/:id/urls' do
+      content_type :json
+      @list = Project::List.new(params[:id])
+      @urls = @list.urls
+      MultiJson.dump @urls
+    end
+
     post '/:id/urls' do
       list = Project::List.new(params[:id])
       unless params[:url].empty?
