@@ -25,14 +25,16 @@
     <link href='/ipad-startup-landscape@2x.png' rel='apple-touch-startup-image' media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)" /> -->
 
     <link href='/favicon.png' rel='shortcut icon' type='image/png' />
-  </head>
-  <body>
-    <%= yield %>
+
     <!--[if lt IE 9]>
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script>
     <![endif]-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js"></script>
-    <script src="<%= asset_path('application.js') %>"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min.js"></script>
+  </head>
+  <body>
+    <%= yield %>
+
     <script type='text/javascript'>
       //<![CDATA[
         var _gaq = _gaq || [];

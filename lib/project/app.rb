@@ -40,7 +40,6 @@ module Project
       unless params[:url].empty?
         list.add_url(params[:url])
       end
-
       redirect "/#{list}"
     end
 
