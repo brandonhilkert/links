@@ -1,6 +1,9 @@
-@Links =
-  getLinks: (list) ->
-    $.getJSON list + "/urls", (data) =>
+class @Links
+  constructor: (list) ->
+    @path = list + "/urls"
+
+  load: ->
+    $.getJSON @path, (data) =>
       $.each data, (index, url) =>
         @renderLink url
 
@@ -11,10 +14,34 @@
     html = template context
     $(".urls").append html
 
-  deleteLink: (url) ->
-    # delete from server
+  add: (url) ->
+    $.ajax
+      type: "POST"
+      url: @path
+      data:
+        url: url
+      success: (data) =>
+        @renderLink JSON.parse(data).url
+        @clearInput()
 
-    #delete from page
+  clearInput: ->
+    $(".new-url input[type=text]").val("")
 
-$(document).on "click", "[data-behavior~=delete-link]", ->
-  Links.deleteLink $(this).data('url')
+  delete: (url) ->
+    $.ajax
+      type: "DELETE"
+      url: @path
+      data:
+        url: url
+      success: ->
+        $(".urls").find("li[data-url='" + url + "']").remove()
+
+$(document).on "keypress", ".new-url input[type=text]", (event) ->
+  if event.keyCode is 13
+    App.links.add $(event.currentTarget).val()
+
+$(document).on "click", ".new-url button", ->
+  App.links.add $(this).prev().val()
+
+$(document).on "click", ".url button", ->
+  App.links.delete $(this).data('url')

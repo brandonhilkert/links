@@ -1,8 +1,6 @@
 <div class="new-url">
-  <form action="<%= "/#{@list}/urls" %>" method="post" accept-charset="utf-8">
-    <input type="text" name="url" placeholder="URL" />
-    <input type="submit" name="commit" value="Add" class="btn btn-info" />
-  </form>
+  <input type="text" name="url" placeholder="URL" />
+  <button class="btn btn-info" />Add</button>
 </div>
 
 <ul class="urls">
@@ -10,7 +8,7 @@
 
 <script id="link-template" type="text/x-handlebars-template">
   <li class="url" data-url="{{ url }}">
-    <button class="btn btn-danger btn-small" data-behavior="delete-link" data-url="{{ url }}" />X</button>
+    <button class="btn btn-danger btn-small" data-url="{{ url }}" />X</button>
     <a href="{{ url }}" title="{{ url }}" target="_blank">{{ url }}</a>
     <br class="clear"></br>
   </li>
@@ -19,6 +17,8 @@
 <script src="<%= asset_path('application.js') %>"></script>
 <script>
   $(function(){
-    Links.getLinks('<%= params[:id] %>');
+    window.App = {};
+    App.links = new Links('<%= @list %>');
+    App.links.load();
   });
 </script>

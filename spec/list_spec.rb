@@ -25,8 +25,9 @@ describe Project::List do
 
   it "can create a new url" do
     Project.redis.sadd(list.key, "http://google.com")
-    list.add_url("http://apple.com")
+    new_url = list.add_url("http://apple.com")
     list.urls.should have(2).urls
+    new_url.should == { url: "http://apple.com" }
   end
 
   it "adds protocol if link doesn't have it" do

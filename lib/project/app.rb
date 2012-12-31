@@ -36,17 +36,17 @@ module Project
     end
 
     post '/:id/urls' do
+      content_type :json
       list = Project::List.new(params[:id])
-      unless params[:url].empty?
-        list.add_url(params[:url])
-      end
-      redirect "/#{list}"
+      new_url = list.add_url(params[:url])
+
+      MultiJson.dump new_url
     end
 
     delete '/:id/urls' do
       list = Project::List.new(params[:id])
       list.remove_url(params[:url])
-      redirect "/#{list}"
+      :ok
     end
 
   end
