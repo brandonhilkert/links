@@ -7,16 +7,18 @@ module Project
     end
 
     def urls
-      Project.redis.smembers(key)
+      Project.redis.hgetall(key)
     end
 
-    def add_url(name)
-      name = "http://#{name}" unless name.include?("://")
-      Project.redis.sadd(key, name)
+    def add_url(value)
+      field = generate_id
+      value = "http://#{value}" unless value.include?("://")
+      Project.redis.hset(key, field, value)
+      { id: field, url: value }
     end
 
-    def remove_url(name)
-      Project.redis.srem(key, name)
+    def remove_url(field)
+      Project.redis.hdel(key, field)
     end
 
     def key
@@ -26,5 +28,11 @@ module Project
     def to_s
       id.to_s
     end
+
+    private
+
+      def generate_id
+        SecureRandom.hex(3)
+      end
   end
 end

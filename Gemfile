@@ -9,6 +9,7 @@ gem 'coffee-script'
 gem 'redis-namespace'
 gem 'thin'
 gem 'rake'
+gem 'multi_json'
 
 group :development, :test do
   gem 'debugger'

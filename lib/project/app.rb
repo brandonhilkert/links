@@ -22,25 +22,28 @@ module Project
       erb :index
     end
 
-    get '/:id' do
-      @list = Project::List.new(params[:id])
-      @urls = @list.urls
-      erb :urls
+    post '/lists' do
+      list = Project::List.new()
+      MultiJson.dump({ id: list.id })
     end
 
-    post '/:id/urls' do
-      list = Project::List.new(params[:id])
-      unless params[:url].empty?
-        list.add_url(params[:url])
-      end
-
-      redirect "/#{list}"
+    get '/lists/:list_id/items' do
+      content_type :json
+      @list = Project::List.new(params[:list_id])
+      MultiJson.dump @list.items.map{ |k, v| { id: k, name: v } }
     end
 
-    delete '/:id/urls' do
-      list = Project::List.new(params[:id])
-      list.remove_url(params[:url])
-      redirect "/#{list}"
+    post '/lists/:list_id/items' do
+      list = Project::List.new(params[:list_id])
+      body = MultiJson.load request.body.read
+      item = list.add_item body.fetch("name")
+      MultiJson.dump item
+    end
+
+    delete '/lists/:list_id/items/:id' do
+      list = Project::List.new(params[:list_id])
+      list.remove_item(params[:id])
+      :ok
     end
 
   end
