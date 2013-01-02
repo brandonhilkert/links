@@ -27,24 +27,24 @@ module Project
       MultiJson.dump({ id: list.id })
     end
 
-    get '/lists/:list_id/items' do
+    get '/lists/:list_id' do
       content_type :json
       @list = Project::List.new(params[:list_id])
-      MultiJson.dump @list.items.map{ |k, v| { id: k, name: v } }
+      MultiJson.dump({ list: { id: params[:list_id], urls: @list.urls.map{ |k, v| { id: k, url: v } } } })
     end
 
-    post '/lists/:list_id/items' do
+    post '/lists/:list_id/urls' do
+      content_type :json
       list = Project::List.new(params[:list_id])
       body = MultiJson.load request.body.read
-      item = list.add_item body.fetch("name")
+      item = list.add_url body.fetch("name")
       MultiJson.dump item
     end
 
-    delete '/lists/:list_id/items/:id' do
+    delete '/lists/:list_id/urls/:id' do
       list = Project::List.new(params[:list_id])
-      list.remove_item(params[:id])
+      list.remove_url(params[:id])
       :ok
     end
-
   end
 end
