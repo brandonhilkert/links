@@ -23,6 +23,7 @@ body {
   margin-bottom: 3%;
   margin-left: 3%;
   -webkit-animation: fade 0.3s ease-in-out;
+  -moz-animation: fade 0.3s ease-in-out;
 
   input[type=text] {
     padding: 2%;
@@ -37,10 +38,11 @@ body {
     border-radius: 0;
 
     -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
 
     &:focus {
       border-color: #2f96b4;
-      -webkit-box-shadow: none;
+      box-shadow: none;
       box-shadow: none;
       width: 70%;
     }
@@ -88,6 +90,11 @@ body {
 }
 
 @-webkit-keyframes fade {
+  0%    { opacity: 0; }
+  100%  { opacity: 1; }
+}
+
+@-moz-keyframes fade {
   0%    { opacity: 0; }
   100%  { opacity: 1; }
 }
