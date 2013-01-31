@@ -20,3 +20,4 @@ bin/
 config/database.yml
 config/local_settings.yml
 .sass-cache/
+.ruby-version
