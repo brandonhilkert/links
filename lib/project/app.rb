@@ -2,6 +2,7 @@ module Project
   class App < Sinatra::Base
     set :root, Project.root
     enable  :method_override
+    mime_type :appcache, "text/cache-manifest"
 
     set :sprockets, Sprockets::Environment.new(root) { |env|
       env.append_path(root.join('assets', 'stylesheets'))
@@ -20,6 +21,11 @@ module Project
 
     get '/' do
       erb :index
+    end
+
+    get '/offline.appcache' do
+      content_type :appcache
+      erb :"offline.appcache", layout: false
     end
 
     get '/:id' do
