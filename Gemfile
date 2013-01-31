@@ -12,6 +12,6 @@ gem 'rake'
 gem 'multi_json'
 
 group :development, :test do
-  gem 'debugger'
+  gem 'pry'
   gem 'rspec'
 end
